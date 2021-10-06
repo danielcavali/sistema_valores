@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="css/style.css">
+    <script src="main.js" defer></script>
+    <title>VALORES DE PRODUTOS</title>
+</head>
+<body>
+<header>
+    <h1 class="header">PRODUTOS</h1>
+</header>
+<main>
+    <div class="botoes">
+     <button type="button" class="button green1 mobile" id="cadastrarProduto" style="float: left">Cadastrar Produto</button>
+        <input id="filtro-produto" style="float: right"/>
+    </div>
+    <table id="tableProduto" class="records">
+        <thead>
+        <tr>
+            <th>Nome</th>
+            <th>Peso/Tamanho</th>
+            <th>Valor</th>
+            <th>Valor Kg/Un</th>
+            <th>Editar/Excluir</th>
+        </tr>
+        </thead>
+        <tbody>
+
+        </tbody>
+    </table>
+    <div class="modal" id="modal">
+        <div class="modal-content">
+            <header class="modal-header">
+                <h2>Novo Produto</h2>
+                <span class="modal-close" id="modalClose">&#10006;</span>
+            </header>
+            <form id="form" class="modal-form">
+                <input type="text" id="nome" data-index="new" class="modal-field" placeholder="Nome do produto"
+                       required>
+                <input type="text" id="tam" class="modal-field " placeholder="peso/tamanho" required>
+                <input type="text" id="valor" class="modal-field" placeholder="valor do produto" required>
+                <input type="text" id="valorun" class="modal-field" placeholder="valor por kg ou unidade" required>
+            </form>
+            <footer class="modal-footer">
+                <button id="salvar" class="button green">Salvar</button>
+                <button id="cancelar" class="button blue">Cancelar</button>
+            </footer>
+        </div>
+    </div>
+    <script>
+        var filtro = document.getElementById('filtro-produto');
+        var tabela = document.getElementById('tableProduto');
+        filtro.onkeyup = function() {
+            var nomeFiltro = filtro.value;
+            for(var i = 1; i < tabela.rows.length; i++) {
+                var conteudoCelula = tabela.rows[i].cells[0].innerText;
+                var corresponde = conteudoCelula.toLowerCase().indexOf(nomeFiltro) >= 0;
+                tabela.rows[i].style.display = corresponde ? '' : 'none';
+            }
+        };
+    </script>
+</main>
+</body>
+
+</html>
