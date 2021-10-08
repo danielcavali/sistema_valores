@@ -37,6 +37,13 @@ header{
     display:flex;
     justify-content: space-between;
 }
+.filtro{
+    display: flex;
+}
+.icon{
+    width:40px;
+    height: 40px;
+}
 main{
     flex-grow: 1;
     display: flex;
